@@ -1,0 +1,33 @@
+server:
+  # The log shows your user-service is trying to use port 8081
+  port: 8081
+
+spring:
+  application:
+    # Set the application name for Eureka
+    name: USER-SERVICE
+  datasource:
+    # You should use a separate database for each service
+    url: jdbc:mysql://localhost:3306/userservicedb
+    username: root
+    password: shahid@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # This will create/update tables automatically
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+# Configuration for registering with Eureka Server
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      # This should point to your Eureka server's address
+      defaultZone: http://localhost:8761/eureka
