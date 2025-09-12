@@ -54,8 +54,7 @@ public class UserServiceImpl implements UserService{
     public User getUser(String userId) {
         User user=userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User with given id not found on server !!"+userId));  
 
-       Rating[] ratingsOfUser = restTemplate.getForObject("http://localhost:8083/ratings/users/" + user.getUserId(), Rating[].class);
-      
+      Rating[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE/ratings/users/" + user.getUserId(), Rating[].class);
         List<Rating> ratings = Arrays.stream(ratingsOfUser).toList(); 
 
         List<Rating> ratingsList = ratings.stream().map(rating -> {
