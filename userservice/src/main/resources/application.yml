@@ -5,7 +5,7 @@ server:
 spring:
   application:
     # Set the application name for Eureka
-    name: USER-SERVICE
+    name: USERSERVICE
   datasource:
     # You should use a separate database for each service
     url: jdbc:mysql://localhost:3306/userservicedb
